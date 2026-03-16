@@ -2,7 +2,7 @@
 
 This repository contains a PyTorch3D based pipeline for recovering clean, animatable garment topology from noisy 3D Gaussian Splatting (SuGaR) extractions. 
 
-## 1. The Problem: The "Polygon Soup" Bottleneck
+## 1. The Problem: The "Polygon Irregularities" Bottleneck
 Extracting meshes directly from 3D Gaussian Splatting (via tools like SuGaR) yields excellent photometric results but highly degenerate geometry. The raw outputs are typically filled with internal faces, self intersections, and severe topological noise, making them impossible to use in standard downstream physics or animation engines.
 
 **Raw SuGaR Extraction (Target):**
