@@ -32,7 +32,7 @@ This project bridges the gap between raw scan data and downstream simulation eng
 
 * **Rigid Docking (ICP):** Utilizes Iterative Closest Point to automatically correct global scale and orientation mismatches between the generic template and the scan before any non rigid deformation begins.
 * **Volume-Preserving Optimization ("Soft-Shell" Warp):** By heavily penalizing deviations from the template's resting edge lengths, the optimization fits the mesh to the scan using Chamfer distance while mathematically forbidding the geometry from imploding into a 2D plane.
-* **Automated LBS Rigging (Gravity Pose Constraint):** Standard T-pose nearest-neighbor binding fails when a scanned garment has its sleeves draped down. The pipeline temporarily poses the underlying SMPL skeleton into a "Gravity Pose" (arms down) to accurately transfer skinning weights, and then lifts the newly rigged garment back into a T-pose.
+* **Automated LBS Rigging (Gravity Pose Constraint):** Standard T-pose nearest neighbor binding fails when a scanned garment has its sleeves draped down. The pipeline temporarily poses the underlying SMPL skeleton into a "Gravity Pose" (arms down) to accurately transfer skinning weights, and then lifts the newly rigged garment back into a T-pose.
 * **Photometric Transfer:** High-frequency RGB data from the original noisy scan is baked onto the new canonical UV space via ray-casting.
 
 ---
@@ -55,7 +55,7 @@ While the current pipeline successfully prevents volume collapse and captures th
 ![Final Wireframe](img/final_texture_wireframe.png)
 
 **Planned Improvements:**
-1. **Quad-Dominant Retopology:** The current template relies on dense triangulation. Implementing a differentiable remeshing step or transferring the warp to a quad-dominant mesh will significantly improve bending deformations during character animation.
+1. **Quad Dominant Retopology:** The current template relies on dense triangulation. Implementing a differentiable remeshing step or transferring the warp to a quad-dominant mesh will significantly improve bending deformations during character animation.
 2. **Adaptive Density:** The wireframe is uniformly dense. Future iterations will explore localized subdivision, maintaining high polygon counts in areas of high curvature (wrinkles/folds) while decimating flat regions (chest/back) for computational efficiency.
 3. **Learned Skinning Weights:** Upgrading from Nearest Neighbor (k-NN) weight transfer to a graph neural network based weight diffusion to handle complex overlapping boundaries (like collars and cuffs) more smoothly during extreme joint articulation.
 
